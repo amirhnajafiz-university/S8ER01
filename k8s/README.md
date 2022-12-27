@@ -28,7 +28,7 @@ Learning kubernetes.
 
 ```kubectl create -f pod-definition.yml```
 
-Check the [definition file]('./pod-definition.yml').
+Check the [definition file](pod-definition.yml).
 
 ### get a pod status (inspect pod)
 
