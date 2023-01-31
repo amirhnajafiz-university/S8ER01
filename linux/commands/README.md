@@ -27,3 +27,23 @@ Find host information:
 ```shell
 hostnamectl
 ```
+
+## File & Directory
+
+Print working directory:
+
+```shell
+pwd
+```
+
+List files:
+
+```shell
+ls [path | /home] [flags | -la]
+```
+
+Move between directories:
+
+```shell
+cd [path | /Desktop]
+```
