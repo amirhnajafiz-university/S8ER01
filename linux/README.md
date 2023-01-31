@@ -13,6 +13,10 @@ to linux architecture.
 - Big amount of systems are running on linux
 - Useful tools
 
+## Kernel
+
+The core of linux. The underlying layer of linux.
+
 ## Shell
 
 User interface of linux. Get commands from user and display the results.
