@@ -15,15 +15,19 @@ to linux architecture.
 
 ## Kernel
 
-The core of linux. The underlying layer of linux.
+The core of linux. The underlying layer of linux. 
+The Linux kernel manages OS resources, making sure there is enough memory 
+available for applications to run, optimizing processor usage, and avoiding 
+system deadlocks caused by competing application demands.
 
 ## Shell
 
-User interface of linux. Get commands from user and display the results.
+The shell is the Linux command line interpreter. 
+It provides an interface between the user and the kernel and executes programs called commands.
 
-## Virtual Machine
+## Linux on Virtual Machine
 
 Running linux on a VM, but linux does not know that it is running on VM.
 For running linux on VM, you need to download a linux distribution image (ubuntu or manjaro or ...).
-After that you need to download a virtual machine manager like VirtualBox. 
+After that you need to download a virtualization software like VirtualBox. 
 Then you can run your image on VMM.
