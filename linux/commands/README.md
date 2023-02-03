@@ -55,3 +55,40 @@ Move between directories:
 ```shell
 cd [path | /Desktop]
 ```
+
+Create a new file:
+
+```shell
+touch [name | me.txt]
+```
+
+Create directories:
+
+```shell
+mkdir [name | user]
+```
+
+Remove file:
+
+```shell
+rm [name]
+```
+
+Remove directory:
+
+```shell
+rmdir [name]
+rm -r [name]
+```
+
+Move file:
+
+```shell
+mv [src] [dst]
+```
+
+Copy file:
+
+```shell
+cp [src] [dst]
+```
