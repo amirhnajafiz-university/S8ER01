@@ -6,6 +6,14 @@
 
 In this lecture I collect linux commands that I learned in courses or I used myself.
 
+## Guide
+
+Get manual of each command:
+
+```shell
+man [command | ls]
+```
+
 ## Kernel
 
 Find linux kernel version:
