@@ -45,6 +45,15 @@ kubectl config set-context $(kubectl config current-context) --namespace=dev
 kubectl get pods --all-namespaces
 ```
 
+```shell
+kubectl run redis --image=redis --dry-run=client -o yaml > pod.yml
+kubectl apply -f pod.yml
+```
+
+```shell
+kubectl get pods -n=dev
+```
+
 ## Resource Quota
 
 ```shell
