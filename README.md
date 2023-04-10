@@ -22,3 +22,6 @@ from ```.asm``` files, which are assembly files.
 Now with these two commands, you can view and disassemble your
 ```.asm``` codes in order to see the CPU opcodes.
 
+To boot our executable later through GRUB, it should be an ELF (Executable and Linkable Format) executable.
+Creating ELF object files by passing the ```‑f elf64``` argument to it.
+
