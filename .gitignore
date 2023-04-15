@@ -1,6 +1,4 @@
 # system
 .DS_Store
-
-# executables
-boot
-multiboot_header
+.idea/
+.vscode/
