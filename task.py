@@ -35,7 +35,6 @@ class Task (object):
 
         # you can add more attributes if you need
         
-    
     def change_state(self,state) -> None:
         """Change the state of the task
 
