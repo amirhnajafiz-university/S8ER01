@@ -37,7 +37,8 @@ class RTOS:
                 if not self.busy:
                     # get a task to start
                     task = self.scheduler.schedule(i)
-                    self.busy = True
+                    if task != None:
+                        self.busy = True
                 elif task.done():
                     # move to done tasks
                     completed_tasks.append(task)
@@ -50,10 +51,9 @@ class RTOS:
             else: # if we are preemptive
                 # take a task and do it
                 task = self.scheduler.schedule(i)
-                task.do()
-                if task.done():
-                    completed_tasks.append(task)
+                if task != None:
+                    task.do()
+                    if task.done():
+                        completed_tasks.append(task)
             
         self.printer.print_schedule(completed_tasks)
-        
-        return completed_tasks
