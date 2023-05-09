@@ -9,6 +9,7 @@ class Printer:
         if task is None:
             print("No task scheduled")
             return
+        
         print(f"Scheduled Task: {task.name}")
         print(f"  Priority: {task.priority}")
         print(f"  State: {task.state}")
@@ -20,13 +21,8 @@ class Printer:
 
 class TaskSetPrinter:
     """TaskSetPrinter Class"""
-    def __init__(self, task_set):
-        """Initialize the TaskSetPrinter instance
-        
-        Args:
-            task_set (TaskSet): The task set to print
-        """
-        self.task_set = task_set
+    def __init__(self):
+        """Initialize the TaskSetPrinter instance."""
         self.printer = Printer()
         
     def print_schedule(self, schedule):

@@ -20,7 +20,7 @@ class Main:
         self.rtos = RTOS(self.task_set, mode=mode, preemptive=preemptive)
 
         # schedule tasks using selected algorithm
-        self.rtos.run()
+        self.rtos.run(self.duration)
 
     def read_tasks_from_csv(self, filename):
         """Read tasks from CSV
@@ -30,8 +30,16 @@ class Main:
         """
         with open(filename, 'r') as csvfile:
             taskreader = csv.reader(csvfile)
+            header = True
+            
             for row in taskreader:
-                name, priority, state, type, act_time, period, wcet, deadline = row
+                priority, name, state, type, act_time, period, wcet, deadline = row
+                
+                # don't read headers
+                if header:
+                    header = False
+                    continue
+                
                 task = Task(
                     priority=int(priority),
                     name=name,
