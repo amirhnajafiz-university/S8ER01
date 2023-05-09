@@ -1,4 +1,7 @@
 from task import Task
+
+
+
 class TaskSet:
     """Task Set Class
     
@@ -12,8 +15,6 @@ class TaskSet:
         self.tasks = tasks
         self.utility = 0
         self.feasible = False
-        
-        
         
     def add_task(self, task):
         """Add a task to the task set
@@ -52,6 +53,7 @@ class TaskSet:
             list: List of all Task objects in the task set
         """
         return self.tasks
+
     def set_feasible(self, feasible):
         """Set the feasibility of the task set
         
@@ -59,6 +61,7 @@ class TaskSet:
             feasible (bool): Whether the task set is feasible
         """
         self.feasible = feasible
+
     def set_utility(self, utility):
         """Set the utility of the task set
         
@@ -66,4 +69,3 @@ class TaskSet:
             utility (float): Utility of the task set
         """
         self.utility = utility
-    

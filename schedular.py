@@ -18,12 +18,14 @@ class Scheduler:
             list: List of all Task objects in the task set that are in the READY state
         """
         ready_tasks = []
+        
         for task in self.task_set.get_all_tasks():
             if task.state == READY:
                 ready_tasks.append(task)
+                
         return ready_tasks
     
-    def schedule(self):
+    def run(self):
         """Schedule the next task to run
         
         Returns:
@@ -35,3 +37,5 @@ class Scheduler:
         ready_tasks = self.get_ready_tasks()
         if not ready_tasks:
             return None
+        
+        # call a method based of the algorithm

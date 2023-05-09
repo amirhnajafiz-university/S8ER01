@@ -52,7 +52,10 @@ class Task (object):
         """
         self.priority = priority
         
-    
-        
-        
-    
+    def is_interrupt(self):
+        """Check the interrupt type.
+
+        Returns:
+            bool: interrupt or not
+        """
+        return self.type == INTERRUPT

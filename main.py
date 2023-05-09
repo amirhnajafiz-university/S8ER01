@@ -2,25 +2,23 @@ import csv
 from task import Task
 from task_set import TaskSet
 from RTOS import RTOS
-from schedular import Scheduler
-from printer import TaskSetPrinter as Printer
+
+
 
 class Main:
     def __init__(self):
-        self.rtos = RTOS()
         self.task_set = TaskSet()
-        self.scheduler = Scheduler()
-        self.printer = Printer()
 
     def run(self):
         # create tasks and add them to task set
         self.read_tasks_from_csv('task1.csv')
+        
+        # creating our rtos
+        self.rtos = RTOS(self.task_set)
 
-        # schedule tasks using EDF algorithm
-        self.scheduler.edf(self.task_set)
+        # schedule tasks using selected algorithm
+        self.rtos.run(100)
 
-        # print scheduled task set
-        self.printer.print_schedule(self.task_set)
     def read_tasks_from_csv(self, filename):
         with open(filename, 'r') as csvfile:
             taskreader = csv.reader(csvfile)
@@ -37,6 +35,8 @@ class Main:
                     deadline=int(deadline)
                 )
                 self.taskset.add_task(task)
+
+
 
 if __name__ == '__main__':
     main = Main()

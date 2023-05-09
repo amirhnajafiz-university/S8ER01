@@ -1,6 +1,8 @@
 from printer import TaskSetPrinter as Printer
 from schedular import Scheduler
 
+
+
 class RTOS:
     """Real-Time Operating System Class"""
     def __init__(self, task_set):
@@ -23,8 +25,11 @@ class RTOS:
             List of Task: The completed task set after running on the operating system for the specified duration
         """
         completed_tasks = []
+        
         for i in range(duration):
             self.scheduler.run()
             completed_tasks += self.scheduler.completed_tasks
+            
         self.printer.print_schedule(completed_tasks)
+        
         return completed_tasks
