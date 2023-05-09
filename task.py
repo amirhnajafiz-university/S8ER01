@@ -3,10 +3,10 @@ READY     = 1   # Ready to run but task of higher or equal priority is currently
 BLOCKED   = 2   # Task is waiting for some condition to be met to move to READY state
 SUSPENDED = 3   # Task is waiting for some other task to unsuspend
 
-INTERRUPT =0  # Task type is interrupt
-PERIODIC  =1  # Task type is periodic
-APERIODIC =2  # Task type is aperiodic
-SPORADIC  =3  # Task type is sporadic
+INTERRUPT = 0  # Task type is interrupt
+PERIODIC  = 1  # Task type is periodic
+APERIODIC = 2  # Task type is aperiodic
+SPORADIC  = 3  # Task type is sporadic
 
 
 
@@ -36,8 +36,17 @@ class Task (object):
         
     
     def do(self):
-        """Make the task work 1 period."""
+        """Make the task work 1 period.
+        
+        Returns:
+            bool: true if everything is set, false if something goes wrong
+        """
+        if not self.is_ready():
+            return False
+        
         self.work = self.work + 1    
+        
+        return True
         
 
     def done(self):
