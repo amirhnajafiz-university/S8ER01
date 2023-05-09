@@ -14,6 +14,22 @@ class TaskSet:
         self.tasks = tasks
         self.utility = 0
         self.feasible = False
+    
+    
+    def get_ready_tasks(self, time):
+        """Get ready tasks of task set.
+        
+        Returns:
+            a list of ready tasks.
+        """
+        array = []
+        
+        for task in self.tasks:
+            if task.is_ready(time):
+                array.append(task)
+        
+        return array
+                
         
     def add_task(self, task):
         """Add a task to the task set
@@ -22,7 +38,8 @@ class TaskSet:
             task (Task): Task object to add
         """
         self.tasks.append(task)
-        
+     
+   
     def remove_task(self, task):
         """Remove a task from the task set
         
@@ -30,7 +47,8 @@ class TaskSet:
             task (Task): Task object to remove
         """
         self.tasks.remove(task)
-        
+      
+  
     def get_task_by_name(self, name) -> Task:
         """Get a task from the task set by name
         
@@ -45,6 +63,7 @@ class TaskSet:
                 return task
         return None
     
+
     def get_all_tasks(self) -> list:
         """Get a list of all tasks in the task set
         
@@ -53,6 +72,7 @@ class TaskSet:
         """
         return self.tasks
 
+
     def set_feasible(self, feasible):
         """Set the feasibility of the task set
         
@@ -60,6 +80,7 @@ class TaskSet:
             feasible (bool): Whether the task set is feasible
         """
         self.feasible = feasible
+
 
     def set_utility(self, utility):
         """Set the utility of the task set
