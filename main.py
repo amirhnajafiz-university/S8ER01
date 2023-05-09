@@ -4,6 +4,7 @@ from task_set import TaskSet
 from RTOS import RTOS
 from schedular import Scheduler
 from printer import TaskSetPrinter as Printer
+
 class Main:
     def __init__(self):
         self.rtos = RTOS()
