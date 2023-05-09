@@ -39,6 +39,7 @@ class Task (object):
 
         Args:
             time (int): Current time.
+
         Returns:
             true or false.
         """

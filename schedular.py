@@ -1,30 +1,26 @@
 from task import * 
 
 
+RM_MODE = 1
+DM_MODE = 2
+EDF_MODE = 3
+
+
 
 class Scheduler:
     """Scheduler Class
     
     Attributes:
         task_set (TaskSet): Task set to be scheduled
+        mode (int): Mode will choose the algorithm
+        preemptive (bool): Algorithm is preemptive or not
     """
-    def __init__(self, task_set):
+    def __init__(self, task_set, mode=RM_MODE, preemptive=False):
         self.task_set = task_set
-        
-    def get_ready_tasks(self):
-        """Get a list of all ready tasks in the task set
-        
-        Returns:
-            list: List of all Task objects in the task set that are in the READY state
-        """
-        ready_tasks = []
-        
-        for task in self.task_set.get_all_tasks():
-            if task.state == READY:
-                ready_tasks.append(task)
-                
-        return ready_tasks
-    
+        self.mode = mode
+        self.preemptive = preemptive
+
+
     def run(self):
         """Schedule the next task to run
         
