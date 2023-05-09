@@ -15,14 +15,16 @@ class Scheduler:
         mode (int): Mode will choose the algorithm
         preemptive (bool): Algorithm is preemptive or not
     """
-    def __init__(self, task_set, mode=RM_MODE, preemptive=False):
+    def __init__(self, task_set, mode=RM_MODE):
         self.task_set = task_set
         self.mode = mode
-        self.preemptive = preemptive
 
 
-    def run(self):
+    def schedule(self, time):
         """Schedule the next task to run
+        
+        Args:
+            time (int): Current time.
         
         Returns:
             Task: The next task to run, or None if no tasks are ready

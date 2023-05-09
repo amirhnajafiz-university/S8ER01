@@ -32,6 +32,21 @@ class Task (object):
         self.period = period
         self.wcet = wcet
         self.deadline = deadline
+        self.work = 0
+        
+    
+    def do(self):
+        """Make the task work 1 period."""
+        self.work = self.work + 1    
+        
+
+    def done(self):
+        """Check if the task is done or not.
+
+        Returns:
+            bool: done or not
+        """
+        return self.work == self.wcet
 
         
     def is_ready(self, time) -> None:

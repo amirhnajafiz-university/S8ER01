@@ -14,10 +14,10 @@ class RTOS:
             preemptive (bool): Algorithm is preemptive or not
         """
         self.task_set = task_set
-        self.scheduler = Scheduler(task_set, mode=mode, preemptive=preemptive)
+        self.scheduler = Scheduler(task_set, mode=mode)
         self.printer = Printer()
+        self.preemptive = preemptive
         self.busy = False
-        self.time = 0
 
 
     def run(self, duration):
@@ -30,10 +30,23 @@ class RTOS:
             List of Task: The completed task set after running on the operating system for the specified duration
         """
         completed_tasks = []
+        task = None
         
         for i in range(duration):
-            self.scheduler.run()
-            completed_tasks += self.scheduler.completed_tasks
+            if not self.preemptive: # if we are not preemptive
+                if not self.busy:
+                    # get a task to start
+                    task = self.scheduler.schedule(i)
+                    self.busy = True
+                elif task.done():
+                    # move to done tasks
+                    completed_tasks.append(task)
+                    task = None
+                    self.busy = False
+                if task != None: # update task downtime
+                    task.do()
+            else:
+                pass
             
         self.printer.print_schedule(completed_tasks)
         
