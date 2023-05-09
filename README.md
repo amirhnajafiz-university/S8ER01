@@ -1,4 +1,23 @@
-# RTOS
+# Minimal RTOS 
 
-Implementing a ```realtime``` operating system with python programming language. The idea
-behind this project is to schedule ```tasks``` of a ```task-set``` based on ```RM```, ```DM``` and ```ED``` algorithems.
+This is a minimal RTOS based on Python. It is a simple implementation of a EDF, RM, DM scheduler. It is a good starting point for learning how to implement a RTOS.
+
+## How to use
+
+
+
+## Documentation
+
+### Task
+
+
+### Taskset
+
+### Scheduler
+
+### System
+
+
+### Printer 
+
+
