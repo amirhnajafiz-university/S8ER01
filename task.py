@@ -33,24 +33,18 @@ class Task (object):
         self.wcet = wcet
         self.deadline = deadline
 
-        # you can add more attributes if you need
         
-    def change_state(self,state) -> None:
-        """Change the state of the task
+    def is_ready(self, time) -> None:
+        """Check if the task is ready or not.
 
         Args:
-            state (int): New state of the task
+            time (int): Current time.
+        Returns:
+            true or false.
         """
-        self.state = state
-
-    def change_priority(self,priority) -> None:
-        """Change the priority of the task
-
-        Args:
-            priority (int): New priority of the task
-        """
-        self.priority = priority
-        
+        return self.act_time >= time and self.act_time + self.deadline < time
+       
+ 
     def is_interrupt(self):
         """Check the interrupt type.
 
