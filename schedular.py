@@ -29,11 +29,12 @@ class Scheduler:
         Returns:
             Task: The next task to run, or None if no tasks are ready
         """
-        # complete here 
 
+        ready_tasks = self.task_set.get_ready_tasks(time)
+        
         # first check if any task is ready or not
-        ready_tasks = self.get_ready_tasks()
-        if not ready_tasks:
+        if len(ready_tasks) == 0:
             return None
         
         # call a method based of the algorithm
+        return ready_tasks[0]

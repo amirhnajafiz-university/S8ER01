@@ -58,7 +58,7 @@ class Task (object):
         Returns:
             true or false.
         """
-        return self.act_time >= time and self.act_time + self.deadline < time
+        return self.act_time >= time and self.act_time + self.deadline < time and not self.done()
        
  
     def is_interrupt(self):
