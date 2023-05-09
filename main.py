@@ -12,9 +12,9 @@ class Main:
         self.task_set = TaskSet()
         self.duration = duration
 
-    def run(self, mode=RM_MODE, preemptive=False):
+    def run(self, file, mode=RM_MODE, preemptive=False):
         # create tasks and add them to task set
-        self.read_tasks_from_csv('task1.csv')
+        self.read_tasks_from_csv(filename=file)
         
         # creating our rtos
         self.rtos = RTOS(self.task_set, mode=mode, preemptive=preemptive)
@@ -65,4 +65,4 @@ class Main:
 
 if __name__ == '__main__':
     main = Main()
-    main.run(mode=RM_MODE, preemptive=False)
+    main.run('tasks1.csv', mode=RM_MODE, preemptive=False)
