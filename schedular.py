@@ -27,11 +27,8 @@ class Scheduler:
             Task: The next task to run, or None if no tasks are ready
         """
         # complete here 
-        
-        
-        # ready_tasks = self.get_ready_tasks()
-        # if not ready_tasks:
-        #     return None
-        # highest_priority = min([task.priority for task in ready_tasks])
-        # highest_priority_tasks = [task for task in ready_tasks if task.priority == highest_priority]
-        # return highest_priority_tasks[0]
+
+        # first check if any task is ready or not
+        ready_tasks = self.get_ready_tasks()
+        if not ready_tasks:
+            return None
