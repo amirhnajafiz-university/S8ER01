@@ -1,6 +1,7 @@
 from task import * 
 
 
+
 RM_MODE = 1
 DM_MODE = 2
 EDF_MODE = 3
@@ -17,7 +18,14 @@ class Scheduler:
     """
     def __init__(self, task_set, mode=RM_MODE):
         self.task_set = task_set
-        self.mode = mode
+        
+        # arrange tasks based on mode
+        if mode == RM_MODE:
+            self.rm()
+        elif mode == DM_MODE:
+            self.dm()
+        elif mode == EDF_MODE:
+            self.edf()
 
 
     def schedule(self, time):
@@ -36,10 +44,10 @@ class Scheduler:
         if len(ready_tasks) == 0:
             return None
         
-        # call a method based of the algorithm
+        # return the top
         return ready_tasks[0]
 
-    
+
     def edf(self):
         """EDF
         
@@ -52,7 +60,7 @@ class Scheduler:
         # set new tasks
         self.task_set.set_tasks(interrupts+others)
     
-    
+
     def dm(self):
         """DM
         
@@ -64,3 +72,18 @@ class Scheduler:
         others = [task for task in self.task_set.get_all() if not task.is_interrupt()].sort(key=lambda x: 1/x.deadline, reverse=True)
         # set new tasks
         self.task_set.set_tasks(interrupts+others)
+
+
+    def rm(self):
+        """RM
+        
+        Sort tasks based on the rate monotonic.
+        """
+        # get interrupts first
+        interrupts = [task for task in self.task_set.get_all() if task.is_interrupt()].sort(key=lambda x: x.deadline)
+        # get periodic tasks by rate monotonic
+        periodic = [task for task in self.task_set.get_all() if not task.is_interrupt() and task.period != 0].sort(key=lambda x: 1/x.period, reverse=True)
+        # get other tasks
+        others = [task for task in self.task_set.get_all() if not task.is_interrupt() and task.period == 0].sort(key=lambda x: x.deadline)
+        # set new tasks
+        self.task_set.set_tasks(interrupts+periodic+others)
