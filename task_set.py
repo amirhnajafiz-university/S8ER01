@@ -37,6 +37,13 @@ class TaskSet:
         
         return array
                 
+    def set_tasks(self, tasks):
+        """Set new tasks.
+
+        Args:
+            tasks (list): list of new tasks.
+        """
+        self.tasks = tasks
         
     def add_task(self, task):
         """Add a task to the task set

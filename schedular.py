@@ -38,3 +38,16 @@ class Scheduler:
         
         # call a method based of the algorithm
         return ready_tasks[0]
+
+    
+    def edf(self):
+        """EDF
+        
+        Sort tasks based on the nearest deadline.
+        """
+        # get interrupts first
+        interrupts = [task for task in self.task_set.get_all() if task.is_interrupt()].sort(key=lambda x: x.deadline)
+        # get other tasks
+        others = [task for task in self.task_set.get_all() if not task.is_interrupt()].sort(key=lambda x: x.deadline)
+        # set new tasks
+        self.task_set.set_tasks(interrupts+others)
