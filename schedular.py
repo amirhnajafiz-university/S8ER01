@@ -51,3 +51,16 @@ class Scheduler:
         others = [task for task in self.task_set.get_all() if not task.is_interrupt()].sort(key=lambda x: x.deadline)
         # set new tasks
         self.task_set.set_tasks(interrupts+others)
+    
+    
+    def dm(self):
+        """DM
+        
+        Sort tasks based on the deadline monotonic.
+        """
+        # get interrupts first
+        interrupts = [task for task in self.task_set.get_all() if task.is_interrupt()].sort(key=lambda x: x.deadline)
+        # get other tasks by deadline monotonic
+        others = [task for task in self.task_set.get_all() if not task.is_interrupt()].sort(key=lambda x: 1/x.deadline, reverse=True)
+        # set new tasks
+        self.task_set.set_tasks(interrupts+others)
