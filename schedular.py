@@ -91,6 +91,6 @@ class Scheduler:
         periodic.sort(key=lambda x: 1/x.period, reverse=True)
         # get other tasks
         others = [task for task in self.task_set.get_all() if not task.is_interrupt() and task.period == 0]
-        others.sort(key=lambda x: x.deadline)
+        others.sort(key=lambda x: x.deadline)        
         # set new tasks
         self.task_set.set_tasks(interrupts+periodic+others)
