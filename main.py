@@ -12,7 +12,7 @@ from schedular import RM_MODE, DM_MODE, EDF_MODE
 # setting command line arguments
 parser = argparse.ArgumentParser()
 parser.add_argument("-m", "--mode", help="Set scheduling mode")
-parser.add_argument("-p", "--preemptive", help="Preemptive scheduling or not", type=bool)
+parser.add_argument("-p", "--preemptive", help="Preemptive scheduling or not")
 parser.add_argument("-f", "--file", help="File name of tasks")
 parser.add_argument("-d", "--duration", help="Program duration", type=int)
 
@@ -109,11 +109,15 @@ if __name__ == '__main__':
     else:
         print("[error] Mode should be RM, DM, or EDF!")
         sys.exit(-1)
+    
+    pre = False
+    if args.preemptive == "True":
+        pre = True
         
     try:
         # start main
         main = Main(duration=args.duration)
-        main.run(args.file, mode=mode, preemptive=args.preemptive)
+        main.run(args.file, mode=mode, preemptive=pre)
     except KeyboardInterrupt:
         print("[info] Termiated!")
         sys.exit(1)
