@@ -12,6 +12,7 @@ class Main:
         self.task_set = TaskSet()
         self.duration = duration
 
+
     def run(self, file, mode=RM_MODE, preemptive=False):
         # create tasks and add them to task set
         self.read_tasks_from_csv(filename=file)
@@ -21,6 +22,7 @@ class Main:
 
         # schedule tasks using selected algorithm
         rtos.run(self.duration)
+
 
     def read_tasks_from_csv(self, filename):
         """Read tasks from CSV
@@ -73,5 +75,5 @@ class Main:
 
 
 if __name__ == '__main__':
-    main = Main()
-    main.run('tasks1.csv', mode=RM_MODE, preemptive=False)
+    main = Main(duration=100)
+    main.run('tasks1.csv', mode=RM_MODE, preemptive=True)
