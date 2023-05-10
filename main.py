@@ -1,6 +1,7 @@
 import csv
 import argparse
 import sys
+
 from task import Task, PERIODIC
 from task_set import TaskSet
 from RTOS import RTOS
@@ -25,6 +26,14 @@ class Main:
 
 
     def run(self, file, mode=RM_MODE, preemptive=False):
+        """Run the main function
+
+        Args:
+            file (string): file name
+            mode (int, optional): Set algorithm mode. Defaults to RM_MODE.
+            preemptive (bool, optional): Preemptive or not. Defaults to False.
+        """
+        
         # create tasks and add them to task set
         self.read_tasks_from_csv(filename=file)
         
