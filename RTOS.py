@@ -87,7 +87,7 @@ class RTOS:
         
         # print extra information
         print()
-        print("==========================================")
+        print("\n==========================================\n")
         print(f'Total time: {duration}s')
         print(f'CPU Utilization: {100 * cpu_busy_time/duration}')
         print(f'Total tasks: {self.task_set.status()}')
@@ -96,5 +96,5 @@ class RTOS:
         print(f'\tFeasible: {missed == 0}')
         print(f'\tPreemptive: {self.preemptive}')
         print(f'\tMode: {self.mode}')
-        print("==========================================")
+        print("\n==========================================\n")
         print()

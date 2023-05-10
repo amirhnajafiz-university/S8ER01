@@ -1,8 +1,19 @@
 import csv
+import argparse
+import sys
 from task import Task, PERIODIC
 from task_set import TaskSet
 from RTOS import RTOS
 from schedular import RM_MODE, DM_MODE, EDF_MODE
+
+
+
+# setting command line arguments
+parser = argparse.ArgumentParser()
+parser.add_argument("-m", "--mode", help="Set scheduling mode")
+parser.add_argument("-p", "--preemptive", help="Preemptive scheduling or not")
+parser.add_argument("-f", "--file", help="File name of tasks")
+parser.add_argument("-d", "--duration", help="Program duration", type=int)
 
 
 
@@ -75,5 +86,25 @@ class Main:
 
 
 if __name__ == '__main__':
-    main = Main(duration=100)
-    main.run('tasks1.csv', mode=RM_MODE, preemptive=True)
+    # parsing command line arguments
+    args = parser.parse_args()
+    
+    # select the mode
+    mode = 0
+    if args.mode == "RM":
+        mode = RM_MODE
+    elif args.mode == "DM":
+        mode = DM_MODE
+    elif args.mode == "EDF":
+        mode = EDF_MODE
+    else:
+        print("[error] Mode should be RM, DM, or EDF!")
+        sys.exit(-1)
+        
+    try:
+        # start main
+        main = Main(duration=args.duration)
+        main.run(args.file, mode=mode, preemptive=args.preemptive)
+    except KeyboardInterrupt:
+        print("[info] Termiated!")
+        sys.exit(1)
