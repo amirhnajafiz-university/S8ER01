@@ -31,5 +31,6 @@ class TaskSetPrinter:
         Args:
             schedule (List[Task]): A list of scheduled tasks
         """
-        for _, task in enumerate(schedule):
+        for i, task in enumerate(schedule):
+            print(f'Time: {i}')
             self.printer.print_task(task)

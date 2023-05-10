@@ -40,8 +40,6 @@ class RTOS:
                     if task != None:
                         self.busy = True
                 elif task.done():
-                    # move to done tasks
-                    completed_tasks.append(task)
                     task = None
                     self.busy = False
                 if task != None: # update task downtime
@@ -53,7 +51,7 @@ class RTOS:
                 task = self.scheduler.schedule(i)
                 if task != None:
                     task.do(i)
-                    if task.done():
-                        completed_tasks.append(task)
+            
+            completed_tasks.append(task)
             
         self.printer.print_schedule(completed_tasks)
