@@ -12,8 +12,15 @@ class TaskSet:
     """
     def __init__(self, tasks=[]):
         self.tasks = tasks
-        self.utility = 0
-        self.feasible = False
+    
+    
+    def get_all(self):
+        """Get all task set tasks
+
+        Returns:
+            list: list of tasks
+        """
+        return self.tasks
     
     
     def get_ready_tasks(self, time):

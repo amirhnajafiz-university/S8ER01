@@ -34,9 +34,11 @@ class RTOS:
             int: number of missed tasks.
         """
         count = 0;
-        for task in self.task_set.tasks:
+        
+        for task in self.task_set.get_all():
             if task.is_missed():
                 count = count + 1
+        
         return count
 
 
@@ -50,6 +52,7 @@ class RTOS:
             float: Utility of CPU
         """
         completed_tasks = []
+        
         task = None
         cpu_busy_time = 0
         
