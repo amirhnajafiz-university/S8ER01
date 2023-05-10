@@ -77,3 +77,12 @@ class Task (object):
             bool: interrupt or not
         """
         return self.type == INTERRUPT
+
+
+    def is_missed(self):
+        """Check if the task is missed or not.
+
+        Returns:
+            bool: Missed task.
+        """
+        return self.wcet != self.work
