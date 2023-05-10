@@ -16,9 +16,6 @@ class Main:
         # create tasks and add them to task set
         self.read_tasks_from_csv(filename=file)
         
-        # print an status
-        print(self.task_set.status())
-        
         # creating our rtos
         rtos = RTOS(self.task_set, mode=mode, preemptive=preemptive)
 
