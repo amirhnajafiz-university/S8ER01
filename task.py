@@ -35,13 +35,13 @@ class Task (object):
         self.work = 0
         
     
-    def do(self):
+    def do(self, time):
         """Make the task work 1 period.
         
         Returns:
             bool: true if everything is set, false if something goes wrong
         """
-        if not self.is_ready():
+        if not self.is_ready(time):
             return False
         
         self.work = self.work + 1    
@@ -67,7 +67,7 @@ class Task (object):
         Returns:
             true or false.
         """
-        return self.act_time >= time and self.act_time + self.deadline < time and not self.done()
+        return self.act_time <= time and self.act_time + self.deadline > time and not self.done()
        
  
     def is_interrupt(self):

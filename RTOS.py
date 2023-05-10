@@ -45,14 +45,14 @@ class RTOS:
                     task = None
                     self.busy = False
                 if task != None: # update task downtime
-                    if not task.do():
+                    if not task.do(i):
                         self.busy = False
                         task = None
             else: # if we are preemptive
                 # take a task and do it
                 task = self.scheduler.schedule(i)
                 if task != None:
-                    task.do()
+                    task.do(i)
                     if task.done():
                         completed_tasks.append(task)
             
